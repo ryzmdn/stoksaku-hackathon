@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/* ============================================
+   StokSaku — Global Design System
+   Color: Slate/Zinc neutral, Emerald positive,
+   Indigo/Blue primary, Rose warnings
+   ============================================ */
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Brand Colors */
+  --color-brand-50: oklch(0.97 0.02 260);
+  --color-brand-100: oklch(0.93 0.04 260);
+  --color-brand-200: oklch(0.87 0.07 260);
+  --color-brand-300: oklch(0.78 0.11 260);
+  --color-brand-400: oklch(0.68 0.15 260);
+  --color-brand-500: oklch(0.58 0.19 260);
+  --color-brand-600: oklch(0.50 0.20 260);
+  --color-brand-700: oklch(0.43 0.18 260);
+  --color-brand-800: oklch(0.37 0.15 260);
+  --color-brand-900: oklch(0.30 0.12 260);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.55 0.02 260 / 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.55 0.02 260 / 0.5);
+}
+
+/* Smooth transitions for all interactive elements */
+*, *::before, *::after {
+  scroll-behavior: smooth;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: oklch(0.98 0.005 260 / 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-dark {
+  background: oklch(0.15 0.01 260 / 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Muted backgrounds for SaaS layout */
+.gradient-mesh {
+  background: oklch(0.98 0.005 260); /* Clean solid light canvas */
+}
+
+/* Pulse animation for alerts */
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+/* Slide in from right */
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.animate-slide-in-right {
+  animation: slide-in-right 0.3s ease-out forwards;
+}
+
+/* Print Media Styles for clean POS Receipts */
+@media print {
+  /* Hide all elements on the screen by default */
+  body * {
+    visibility: hidden;
+  }
+  /* Show only the receipt print area and its contents */
+  #receipt-print-area,
+  #receipt-print-area * {
+    visibility: visible;
+  }
+  /* Position the receipt at the top left of the printed page */
+  #receipt-print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: white;
+  }
+}
+
