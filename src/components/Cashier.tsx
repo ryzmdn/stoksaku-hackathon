@@ -9,7 +9,6 @@ import { formatRupiah, generateId } from '../data';
 import {
   PlusIcon,
   MinusIcon,
-  TrashIcon,
   CartIcon,
   SearchIcon,
   CheckIcon,
